@@ -50,6 +50,7 @@ var ImageBooleanLists = [];
 var $wrapperImage = document.querySelectorAll(".image");
 var IMG_WIDTH = 200;
 var IMG_HEIGHT = 200;
+var TRUE_IMG_COUNT = 3;
 var $questionText = document.getElementById('question-text');
 $questionText.innerHTML = "トイプードルを全て選んでください";
 var createImageTag = function (createImage) {
@@ -217,13 +218,15 @@ displayQuiz().then(function (imageLists) {
     }); };
     // 「確認」ボタンを押したときのクリックアクション
     button.addEventListener('click', function () {
-        // if (boolItem === true) {
-        //   window.alert('お見事！正解です');
-        // } else {
-        //   window.alert('残念!不正解です');
-        // }
         if (ImageBooleanLists.includes(false)) {
             window.alert('不正解です。ロック解除に失敗しました');
         }
+        else if (ImageBooleanLists.includes(true) && isTrueCount()) {
+            window.alert('正解です。ロック解除に成功しました');
+        }
     });
+    var isTrueCount = function () {
+        var trueList = ImageBooleanLists.filter(function (item) { return item !== false; });
+        trueList.length >= TRUE_IMG_COUNT;
+    };
 });

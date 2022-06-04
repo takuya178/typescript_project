@@ -19,6 +19,7 @@ let ImageBooleanLists: Array<boolean> = [];
 const $wrapperImage = document.querySelectorAll(".image");
 const IMG_WIDTH = 200;
 const IMG_HEIGHT = 200;
+const TRUE_IMG_COUNT = 3;
 const $questionText = <HTMLElement>document.getElementById('question-text')!;
 $questionText.innerHTML = "トイプードルを全て選んでください";
 
@@ -142,9 +143,15 @@ displayQuiz().then((imageLists: Array<boolean>) => {
       return ImageBooleanLists;
     }
     // 「確認」ボタンを押したときのクリックアクション
-    button.addEventListener('click', () => {
-        if (ImageBooleanLists.includes(false)) {
-          window.alert('不正解です。ロック解除に失敗しました');
+    button.addEventListener('click', (): void => {
+        if (ImageBooleanLists.includes(false)) { 
+          window.alert('不正解です。ロック解除に失敗しました'); 
+        } else if (ImageBooleanLists.includes(true) && isTrueCount()) { 
+          window.alert('正解です。ロック解除に成功しました'); 
         }
     });
+    const isTrueCount = (): void => {
+      const trueList = ImageBooleanLists.filter(item => item !== false);
+      trueList.length >= TRUE_IMG_COUNT;
+    }
 });
