@@ -1,4 +1,3 @@
-// クリックした内容を配列に入れる。
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -37,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var _this = this;
 var $main = document.getElementById('top');
+var button = document.getElementById('button');
 var img1 = document.createElement("img");
 var img2 = document.createElement("img");
 var img3 = document.createElement("img");
@@ -50,6 +50,8 @@ var ImageBooleanLists = [];
 var $wrapperImage = document.querySelectorAll(".image");
 var IMG_WIDTH = 200;
 var IMG_HEIGHT = 200;
+var $questionText = document.getElementById('question-text');
+$questionText.innerHTML = "トイプードルを全て選んでください";
 var createImageTag = function (createImage) {
     return new Promise(function (resolve) {
         resolve(createImage);
@@ -89,61 +91,60 @@ var displayQuiz = function () { return __awaiter(_this, void 0, void 0, function
     var image1, image2, image3, image4, image5, image6, image7, image8, image9;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, displayimage(rodingTrueImage(img1, 'static/pudol1.png'), 1000)];
+            case 0: return [4 /*yield*/, displayimage(rodingTrueImage(img1, './../../static/pudol1.png'), 100)];
             case 1:
                 image1 = _a.sent();
                 return [4 /*yield*/, createImageTag($wrapperImage[0].appendChild(img1))];
             case 2:
                 _a.sent();
-                return [4 /*yield*/, displayimage(rodingTrueImage(img2, 'static/pudol2.jpeg'), 1000)];
+                return [4 /*yield*/, displayimage(rodingTrueImage(img2, './../../static/pudol2.jpeg'), 100)];
             case 3:
                 image2 = _a.sent();
                 return [4 /*yield*/, createImageTag($wrapperImage[1].appendChild(img2))];
             case 4:
                 _a.sent();
-                return [4 /*yield*/, displayimage(rodingTrueImage(img3, 'static/pudol3.jpeg'), 1000)];
+                return [4 /*yield*/, displayimage(rodingTrueImage(img3, './../../static/pudol3.jpeg'), 100)];
             case 5:
                 image3 = _a.sent();
                 return [4 /*yield*/, createImageTag($wrapperImage[2].appendChild(img3))];
             case 6:
                 _a.sent();
-                return [4 /*yield*/, displayimage(rodingTrueImage(img4, 'static/pudol4.jpeg'), 1000)];
+                return [4 /*yield*/, displayimage(rodingTrueImage(img4, './../../static/pudol4.jpeg'), 100)];
             case 7:
                 image4 = _a.sent();
                 return [4 /*yield*/, createImageTag($wrapperImage[3].appendChild(img4))];
             case 8:
                 _a.sent();
-                return [4 /*yield*/, displayimage(rodingFalseImage(img5, 'static/tichen.webp'), 1000)];
+                return [4 /*yield*/, displayimage(rodingFalseImage(img5, './../../static/tichen.webp'), 100)];
             case 9:
                 image5 = _a.sent();
                 return [4 /*yield*/, createImageTag($wrapperImage[4].appendChild(img5))];
             case 10:
                 _a.sent();
-                return [4 /*yield*/, displayimage(rodingFalseImage(img6, 'static/tichen2.webp'), 1000)];
+                return [4 /*yield*/, displayimage(rodingFalseImage(img6, './../../static/tichen2.webp'), 100)];
             case 11:
                 image6 = _a.sent();
                 return [4 /*yield*/, createImageTag($wrapperImage[5].appendChild(img6))];
             case 12:
                 _a.sent();
-                return [4 /*yield*/, displayimage(rodingFalseImage(img7, 'static/tichen3.jpeg'), 1000)];
+                return [4 /*yield*/, displayimage(rodingFalseImage(img7, './../../static/tichen3.jpeg'), 100)];
             case 13:
                 image7 = _a.sent();
                 return [4 /*yield*/, createImageTag($wrapperImage[6].appendChild(img7))];
             case 14:
                 _a.sent();
-                return [4 /*yield*/, displayimage(rodingFalseImage(img8, 'static/tichen4.jpeg'), 1000)];
+                return [4 /*yield*/, displayimage(rodingFalseImage(img8, './../../static/tichen4.jpeg'), 100)];
             case 15:
                 image8 = _a.sent();
                 return [4 /*yield*/, createImageTag($wrapperImage[7].appendChild(img8))];
             case 16:
                 _a.sent();
-                return [4 /*yield*/, displayimage(rodingFalseImage(img9, 'static/tichen5.jpeg'), 1000)];
+                return [4 /*yield*/, displayimage(rodingFalseImage(img9, './../../static/tichen5.jpeg'), 100)];
             case 17:
                 image9 = _a.sent();
                 return [4 /*yield*/, createImageTag($wrapperImage[8].appendChild(img9))];
             case 18:
                 _a.sent();
-                console.log(JSON.stringify(image1).includes('false'));
                 return [2 /*return*/, [
                         JSON.stringify(image1).includes('true'),
                         JSON.stringify(image2).includes('true'),
@@ -165,13 +166,11 @@ var rodingImageSize = function (img, src) {
     img.classList.add('grid-item');
 };
 displayQuiz().then(function (imageLists) {
-    console.log(imageLists);
     var displayImage = function () {
         $wrapperImage.forEach(function (image) {
             return new Promise(function () {
                 image.addEventListener('click', function (e) {
                     image.classList.toggle('active');
-                    // console.log(image);
                     clickImageBooleanLists(e, imageLists);
                 });
             });
@@ -213,9 +212,18 @@ displayQuiz().then(function (imageLists) {
                 }
             };
             getImage({ img: img1 });
-            console.log(ImageBooleanLists);
             return [2 /*return*/, ImageBooleanLists];
         });
     }); };
+    // 「確認」ボタンを押したときのクリックアクション
+    button.addEventListener('click', function () {
+        // if (boolItem === true) {
+        //   window.alert('お見事！正解です');
+        // } else {
+        //   window.alert('残念!不正解です');
+        // }
+        if (ImageBooleanLists.includes(false)) {
+            window.alert('不正解です。ロック解除に失敗しました');
+        }
+    });
 });
-// console.log(JSON.stringify(imageLists[0]).includes('false'));
