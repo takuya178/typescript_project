@@ -15,7 +15,7 @@ let img6 = <HTMLImageElement>document.createElement("img")
 let img7 = <HTMLImageElement>document.createElement("img")
 let img8 = <HTMLImageElement>document.createElement("img")
 let img9 = <HTMLImageElement>document.createElement("img")
-let clickImageJudgeLists: Array<boolean> = [];
+let ImageBooleanLists: Array<boolean> = [];
 const $wrapperImage = document.querySelectorAll(".image");
 const IMG_WIDTH = 200;
 const IMG_HEIGHT = 200;
@@ -110,14 +110,13 @@ displayQuiz().then((imageLists: Array<boolean>) => {
           image.classList.toggle('active');
           // console.log(image);
           
-          clickHandler(e, imageLists);
+          clickImageBooleanLists(e, imageLists);
         })})
       });
     }
     displayImage();
     
-    const clickHandler = async (e: Event, imageLists: Array<boolean>) => {
-
+    const clickImageBooleanLists = async (e: Event, imageLists: Array<boolean>) => {
       type ImageType = {
         img: HTMLImageElement
       }
@@ -125,38 +124,38 @@ displayQuiz().then((imageLists: Array<boolean>) => {
       const getImage = (image: ImageType) => {
         switch(e.target) {
           case img1:
-            clickImageJudgeLists.push(imageLists[0]);
+            ImageBooleanLists.push(imageLists[0]);
             break;
           case img2:
-            clickImageJudgeLists.push(imageLists[1]);
+            ImageBooleanLists.push(imageLists[1]);
             break;
           case img3:
-            clickImageJudgeLists.push(imageLists[2]);
+            ImageBooleanLists.push(imageLists[2]);
             break;
           case img4:
-            clickImageJudgeLists.push(imageLists[3]);
+            ImageBooleanLists.push(imageLists[3]);
             break;
           case img5:
-            clickImageJudgeLists.push(imageLists[4]);
+            ImageBooleanLists.push(imageLists[4]);
             break;
           case img6:
-            clickImageJudgeLists.push(imageLists[5]);
+            ImageBooleanLists.push(imageLists[5]);
             break;
           case img7:
-            clickImageJudgeLists.push(imageLists[6]);
+            ImageBooleanLists.push(imageLists[6]);
             break;
           case img8:
-            clickImageJudgeLists.push(imageLists[7]);
+            ImageBooleanLists.push(imageLists[7]);
             break;
           case img9:
-            clickImageJudgeLists.push(imageLists[8]);
-            return clickImageJudgeLists;
+            ImageBooleanLists.push(imageLists[8]);
+            return ImageBooleanLists;
         }
       };
       getImage({img: img1});
 
-      console.log(clickImageJudgeLists);
-      return clickImageJudgeLists;
+      console.log(ImageBooleanLists);
+      return ImageBooleanLists;
     }
   });
 

@@ -46,7 +46,7 @@ var img6 = document.createElement("img");
 var img7 = document.createElement("img");
 var img8 = document.createElement("img");
 var img9 = document.createElement("img");
-var clickImageJudgeLists = [];
+var ImageBooleanLists = [];
 var $wrapperImage = document.querySelectorAll(".image");
 var IMG_WIDTH = 200;
 var IMG_HEIGHT = 200;
@@ -172,49 +172,49 @@ displayQuiz().then(function (imageLists) {
                 image.addEventListener('click', function (e) {
                     image.classList.toggle('active');
                     // console.log(image);
-                    clickHandler(e, imageLists);
+                    clickImageBooleanLists(e, imageLists);
                 });
             });
         });
     };
     displayImage();
-    var clickHandler = function (e, imageLists) { return __awaiter(_this, void 0, void 0, function () {
+    var clickImageBooleanLists = function (e, imageLists) { return __awaiter(_this, void 0, void 0, function () {
         var getImage;
         return __generator(this, function (_a) {
             getImage = function (image) {
                 switch (e.target) {
                     case img1:
-                        clickImageJudgeLists.push(imageLists[0]);
+                        ImageBooleanLists.push(imageLists[0]);
                         break;
                     case img2:
-                        clickImageJudgeLists.push(imageLists[1]);
+                        ImageBooleanLists.push(imageLists[1]);
                         break;
                     case img3:
-                        clickImageJudgeLists.push(imageLists[2]);
+                        ImageBooleanLists.push(imageLists[2]);
                         break;
                     case img4:
-                        clickImageJudgeLists.push(imageLists[3]);
+                        ImageBooleanLists.push(imageLists[3]);
                         break;
                     case img5:
-                        clickImageJudgeLists.push(imageLists[4]);
+                        ImageBooleanLists.push(imageLists[4]);
                         break;
                     case img6:
-                        clickImageJudgeLists.push(imageLists[5]);
+                        ImageBooleanLists.push(imageLists[5]);
                         break;
                     case img7:
-                        clickImageJudgeLists.push(imageLists[6]);
+                        ImageBooleanLists.push(imageLists[6]);
                         break;
                     case img8:
-                        clickImageJudgeLists.push(imageLists[7]);
+                        ImageBooleanLists.push(imageLists[7]);
                         break;
                     case img9:
-                        clickImageJudgeLists.push(imageLists[8]);
-                        return clickImageJudgeLists;
+                        ImageBooleanLists.push(imageLists[8]);
+                        return ImageBooleanLists;
                 }
             };
             getImage({ img: img1 });
-            console.log(clickImageJudgeLists);
-            return [2 /*return*/, clickImageJudgeLists];
+            console.log(ImageBooleanLists);
+            return [2 /*return*/, ImageBooleanLists];
         });
     }); };
 });
